@@ -23,6 +23,7 @@ module "ec2" {
   source = "./modules/ec2"
 
   project_name      = var.project_name
+  instance_name     = var.instance_name
   instance_type     = var.instance_type
   subnet_id         = module.vpc.public_subnet_id
   security_group_id = module.security.security_group_id

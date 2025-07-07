@@ -28,7 +28,7 @@ resource "aws_instance" "main" {
   }
 
   tags = {
-    Name = "${var.project_name}-instance"
+    Name = "${var.project_name}-${var.instance_name}"
   }
 }
 
@@ -37,6 +37,6 @@ resource "aws_eip" "instance" {
   domain   = "vpc"
 
   tags = {
-    Name = "${var.project_name}-instance-eip"
+    Name = "${var.project_name}-${var.instance_name}-eip"
   }
 } 

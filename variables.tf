@@ -10,6 +10,12 @@ variable "project_name" {
   default     = "demo"
 }
 
+variable "instance_name" {
+  description = "Name of the EC2 instance"
+  type        = string
+  default     = "web-server"
+}
+
 variable "vpc_cidr" {
   description = "CIDR block for VPC"
   type        = string
