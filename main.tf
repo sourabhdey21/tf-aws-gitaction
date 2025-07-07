@@ -28,4 +28,5 @@ module "ec2" {
   subnet_id         = module.vpc.public_subnet_id
   security_group_id = module.security.security_group_id
   root_volume_size  = var.root_volume_size
+  ssh_public_key    = var.ssh_public_key
 } 

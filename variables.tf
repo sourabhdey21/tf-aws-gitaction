@@ -13,7 +13,7 @@ variable "project_name" {
 variable "instance_name" {
   description = "Name of the EC2 instance"
   type        = string
-  default     = "webserver"
+  default     = "web-server"
 }
 
 variable "vpc_cidr" {
@@ -43,11 +43,16 @@ variable "availability_zone" {
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
-  default     = "t3.small"
+  default     = "t2.micro"
 }
 
 variable "root_volume_size" {
   description = "Size of the root volume in GB"
   type        = number
-  default     = 30
+  default     = 20
+}
+
+variable "ssh_public_key" {
+  description = "SSH public key for EC2 instance access"
+  type        = string
 } 

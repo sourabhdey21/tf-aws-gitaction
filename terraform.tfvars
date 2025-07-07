@@ -1,0 +1,1 @@
+ssh_public_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJFPp8qEp9MqnI1vmnKuSG+fMkgi4cXW3KUNYkNcTBww ubuntu@SUN189"

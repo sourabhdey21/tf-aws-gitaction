@@ -14,9 +14,20 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical
 }
 
+# Create key pair
+resource "aws_key_pair" "instance_key" {
+  key_name   = "${var.project_name}-${var.instance_name}-key"
+  public_key = var.ssh_public_key
+
+  tags = {
+    Name = "${var.project_name}-${var.instance_name}-key"
+  }
+}
+
 resource "aws_instance" "main" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
+  key_name      = aws_key_pair.instance_key.key_name
 
   subnet_id                   = var.subnet_id
   vpc_security_group_ids      = [var.security_group_id]
