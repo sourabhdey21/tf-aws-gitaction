@@ -86,13 +86,35 @@ resource "aws_route_table" "private" {
   }
 }
 
+# Get the main route table ID
+data "aws_route_table" "main_route_table" {
+  vpc_id = aws_vpc.main.id
+  filter {
+    name   = "association.main"
+    values = ["true"]
+  }
+}
+
 # Route Table Associations
 resource "aws_route_table_association" "public" {
   subnet_id      = aws_subnet.public.id
   route_table_id = aws_route_table.public.id
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_route_table_association" "private" {
   subnet_id      = aws_subnet.private.id
   route_table_id = aws_route_table.private.id
+
+  lifecycle {
+    create_before_destroy = true
+  }
+
+  depends_on = [
+    aws_route_table.private,
+    aws_subnet.private
+  ]
 } 
